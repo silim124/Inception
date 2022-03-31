@@ -6,7 +6,7 @@
 #    By: silim <silim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/27 22:10:12 by silim             #+#    #+#              #
-#    Updated: 2022/03/31 23:50:13 by silim            ###   ########.fr        #
+#    Updated: 2022/03/31 23:54:36 by silim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,10 +34,9 @@ down:
 		docker-compose -f srcs/docker-compose.yml down -v
 
 volumes:
-		sudo mkdir -p /home
-		@sudo chmod a+w $(HOME)
+		@echo "create volume folders on ${HOME}..."
+		sudo mkdir -p /home/silim/data/db_data /home/silim/data/wp_data
 		sudo mkdir -p $(HOME)/data/db_data $(HOME)/data/wp_data
-		@sudo chmod a-w /home
 
 clean: down
 		@echo "remove remaining data..."
