@@ -1,6 +1,6 @@
 FROM alpine:3.14
 
-RUN apk update && add nginx openrc vim openssl
+RUN apk update && apk add nginx openrc vim openssl
 
 RUN mkdir -p /var/www/html/
 

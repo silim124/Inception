@@ -6,7 +6,7 @@
 #    By: silim <silim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/27 22:10:12 by silim             #+#    #+#              #
-#    Updated: 2022/03/29 04:30:17 by silim            ###   ########.fr        #
+#    Updated: 2022/03/31 23:50:13 by silim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,11 +18,11 @@ all: clean hosts volumes build up
 
 hosts:
 		@echo "set host to ${HOST}..."
-		@sudo chmod a+w ${HOSTS_DIR}
-		@echo "# This is for Inception Project" >> ${HOSTS_DIR}
-		@echo "127.0.0.1 ${HOST}.42.fr" >> ${HOSTS_DIR}
-		@echo "# This is for Inception Project" >> ${HOSTS_DIR}
-		@sudo chmod a-w ${HOSTS_DIR}
+		#@sudo chmod a+w ${HOSTS_DIR}
+		#@echo "# This is for Inception Project" >> ${HOSTS_DIR}
+		#@echo "127.0.0.1 ${HOST}.42.fr" >> ${HOSTS_DIR}
+		#@echo "# This is for Inception Project" >> ${HOSTS_DIR}
+		#@sudo chmod a-w ${HOSTS_DIR}
 
 build:
 		docker-compose -f srcs/docker-compose.yml build
@@ -34,7 +34,10 @@ down:
 		docker-compose -f srcs/docker-compose.yml down -v
 
 volumes:
-		mkdir -p $(HOME)/data/db_data $(HOME)/data/wp_data
+		sudo mkdir -p /home
+		@sudo chmod a+w $(HOME)
+		sudo mkdir -p $(HOME)/data/db_data $(HOME)/data/wp_data
+		@sudo chmod a-w /home
 
 clean: down
 		@echo "remove remaining data..."
