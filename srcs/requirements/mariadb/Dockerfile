@@ -6,8 +6,11 @@ RUN apk update && \
 RUN openrc
 RUN touch /run/openrc/softlevel
 
-COPY conf/wordpress.sql .
+COPY tools/setup.sh /
+COPY conf/my.cnf /etc/my.cnf
 
 EXPOSE 3306
 
-ENTRYPOINT [ "./run.sh" ]
+RUN chmod +x ./setup.sh
+
+ENTRYPOINT [ "./setup.sh" ]

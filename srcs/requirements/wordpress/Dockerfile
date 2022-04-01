@@ -12,13 +12,6 @@ RUN wget https://wordpress.org/latest.tar.gz \
 
 COPY /conf/wp-config.php ${WP_VOLUME}
 
-RUN openrc
-RUN touch /run/openrc/softlevel
-
-# 유저:그룹
-RUN chown -R nobody:nobody ${WP_VOLUME} \
-&& chmod -R 775 ${WP_VOLUME}
-
 COPY /conf/www.conf /etc/php7/php-fpm.d/
 
 EXPOSE 9000
