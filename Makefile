@@ -18,11 +18,8 @@ all: clean hosts volumes build up
 
 hosts:
 		@echo "set host to ${HOST}..."
-		@sudo chmod a+w ${HOSTS_DIR}
 		@echo "# This is for Inception Project" >> ${HOSTS_DIR}
-		@echo "127.0.0.1 ${HOST}.42.kr" >> ${HOSTS_DIR}
-		@echo "# This is for Inception Project" >> ${HOSTS_DIR}
-		@sudo chmod a-w ${HOSTS_DIR}
+		@sudo sed -i "s/localhost/${HOST}.42.kr/g" /etc/hosts
 
 build:
 		docker-compose -f srcs/docker-compose.yml build
@@ -32,6 +29,7 @@ up:
 
 down:
 		docker-compose -f srcs/docker-compose.yml down -v
+		@sudo sed -i "s/${HOST}.42.kr/localhost/g" /etc/hosts
 
 volumes:
 		@echo "create volume folders on ${HOME}..."
