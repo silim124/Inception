@@ -1,4 +1,4 @@
-FROM alpine:3.14
+FROM alpine:3.15
 
 RUN apk update && \
 	apk add openrc \
@@ -10,9 +10,12 @@ RUN wget https://wordpress.org/latest.tar.gz \
 	&& tar -xvf /latest.tar.gz && rm -rf /latest.tar.gz \
 	&& mkdir -p /var/www/ && mv wordpress/ /var/www/
 
-COPY /conf/wp-config.php ${WP_VOLUME}
+COPY /conf/wp-config.php /var/www/wordpress/
 
 COPY /conf/www.conf /etc/php7/php-fpm.d/
+
+RUN chown -R nobody:nobody /var/www/wordpress/ && \
+	chmod -R 775 /var/www/wordpress/
 
 EXPOSE 9000
 

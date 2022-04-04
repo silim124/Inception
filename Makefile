@@ -18,11 +18,10 @@ all: clean hosts volumes build up
 
 hosts:
 		@echo "set host to ${HOST}..."
-		@echo "# This is for Inception Project" >> ${HOSTS_DIR}
 		@sudo sed -i "s/localhost/${HOST}.42.kr/g" /etc/hosts
 
 build:
-		docker-compose -f srcs/docker-compose.yml build
+		docker-compose -f srcs/docker-compose.yml build #--no-cache
 
 up:
 		docker-compose -f srcs/docker-compose.yml up -d --remove-orphans

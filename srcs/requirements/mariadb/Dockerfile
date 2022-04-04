@@ -1,4 +1,4 @@
-FROM alpine:3.14
+FROM alpine:3.15
 
 RUN apk update && \
 	apk add mariadb mariadb-common mariadb-client openrc
@@ -6,11 +6,11 @@ RUN apk update && \
 RUN openrc
 RUN touch /run/openrc/softlevel
 
-COPY tools/setup.sh /
-COPY conf/my.cnf /etc/my.cnf
+RUN mkdir -p /run/mysqld
+
+COPY tools/ /
+COPY conf/mariadb-server.cnf /etc/my.cnf.d/mariadb-server.cnf
 
 EXPOSE 3306
 
-RUN chmod +x ./setup.sh
-
-ENTRYPOINT [ "./setup.sh" ]
+CMD [ "sh", "setup.sh" ]

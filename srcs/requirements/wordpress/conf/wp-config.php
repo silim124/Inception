@@ -1,12 +1,12 @@
 <?php
 
-define( 'DB_NAME', getenv('WP_NAME') );
+define( 'DB_NAME', 'wordpress' );
 
-define( 'DB_USER', getenv('WP_USER') );
+define( 'DB_USER', 'silim' );
 
-define( 'DB_PASSWORD', getenv('WP_PASSWORD') );
+define( 'DB_PASSWORD', 'silim' );
 
-define( 'DB_HOST', getenv('WP_HOST') );
+define( 'DB_HOST', 'mariadb:3306' );
 
 define( 'DB_CHARSET', 'utf8' );
 

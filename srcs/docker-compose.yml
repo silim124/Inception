@@ -3,7 +3,12 @@ version: '3'
 services:
   mariadb:
     container_name: mariadb
-    build: requirements/mariadb
+    build:
+      context: requirements/mariadb
+      args:
+        DB_NAME: ${DB_NAME}
+        DB_USER: ${DB_USER}
+        DB_PASSWORD: ${DB_PASSWORD}
     image: mariadb
     volumes:
       - db_data:/var/lib/mysql
@@ -15,7 +20,7 @@ services:
 
   wordpress:
     container_name: wordpress
-    build: requirements/wordpress/
+    build: requirements/wordpress
     image: wordpress
     volumes:
       - wp_data:/var/www/wordpress
@@ -29,7 +34,7 @@ services:
 
   nginx:
     container_name: nginx
-    build: requirements/nginx/
+    build: requirements/nginx
     image: nginx
     depends_on:
       - wordpress
@@ -39,7 +44,7 @@ services:
     volumes:
       - wp_data:/var/www/wordpress
     ports:
-      - "443:443"
+      - 443:443
     env_file:
       - .env
 
