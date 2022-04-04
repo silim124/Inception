@@ -7,6 +7,9 @@ mysql -u root -e "CREATE DATABASE IF NOT EXISTS wordpress;"
 mysql -u root -e "CREATE USER 'silim'@'%' IDENTIFIED BY 'silim';"
 mysql -u root -e "GRANT ALL PRIVILEGES ON wordpress.* TO 'silim'@'%';"
 
+mysql -u root -e "CREATE USER 'silim'@'localhost' IDENTIFIED BY 'silim';"
+mysql -u root -e "GRANT ALL PRIVILEGES ON wordpress.* TO 'silim'@'localhost';"
+
 mysql -u root -e "FLUSH PRIVILEGES;"  # 변경 사항 저장 및 활성화
 
 mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'silim';";
