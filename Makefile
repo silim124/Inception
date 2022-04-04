@@ -6,7 +6,7 @@
 #    By: silim <silim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/27 22:10:12 by silim             #+#    #+#              #
-#    Updated: 2022/04/05 02:08:40 by silim            ###   ########.fr        #
+#    Updated: 2022/04/05 02:12:06 by silim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ HOME=/home/${HOST}
 HOST=silim
 HOSTS_DIR=/etc/hosts
 
-all: clean hosts volumes build up
+all: down hosts volumes build up
 
 hosts:
 		@echo "set host to ${HOST}..."
@@ -36,11 +36,9 @@ volumes:
 
 clean: down
 		@echo "remove remaining data..."
+		docker volume rm	db_data wp_data
 		docker rmi			mariadb wordpress nginx
 
-fclean: clean
-		docker volume rm	db_data wp_data
+re:		down clean all
 
-re:		down fclean all
-
-.PHONY:	 all build up down clean fclean re
+.PHONY:	 all build up down clean re
