@@ -6,7 +6,7 @@
 #    By: silim <silim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/27 22:10:12 by silim             #+#    #+#              #
-#    Updated: 2022/04/05 02:12:06 by silim            ###   ########.fr        #
+#    Updated: 2022/04/05 02:21:50 by silim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ up:
 
 down:
 		docker-compose -f srcs/docker-compose.yml down
-		@sudo sed -i "s/${HOST}.42.kr/localhost/g" /etc/hosts
+		@sudo sed -i "s/${HOST}.42.fr/localhost/g" /etc/hosts
 
 volumes:
 		@echo "create volume folders on ${HOME}..."
@@ -36,7 +36,6 @@ volumes:
 
 clean: down
 		@echo "remove remaining data..."
-		docker volume rm	db_data wp_data
 		docker rmi			mariadb wordpress nginx
 
 re:		down clean all
