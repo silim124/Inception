@@ -6,7 +6,7 @@
 #    By: silim <silim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/27 22:10:12 by silim             #+#    #+#              #
-#    Updated: 2022/04/05 00:55:25 by silim            ###   ########.fr        #
+#    Updated: 2022/04/05 02:05:04 by silim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,10 +36,9 @@ volumes:
 
 clean: down
 		@echo "remove remaining data..."
-		sudo rm -rf $(HOME)/data
+		docker rmi			mariadb wordpress nginx
 
 fclean: clean
-		docker rmi			mariadb wordpress nginx
 		docker volume rm	db_data wp_data
 
 re:		down fclean all
