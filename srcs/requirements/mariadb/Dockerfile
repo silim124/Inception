@@ -9,7 +9,7 @@ RUN touch /run/openrc/softlevel
 RUN mkdir -p /run/mysqld
 
 COPY tools/ /
-#COPY conf/mariadb-server.cnf /etc/my.cnf.d/mariadb-server.cnf
+COPY conf/mariadb-server.cnf /etc/my.cnf.d/mariadb-server.cnf
 
 EXPOSE 3306
 
