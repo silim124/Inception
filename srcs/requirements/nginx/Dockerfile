@@ -16,3 +16,4 @@ RUN mkdir /etc/nginx/ssl && openssl req \
 EXPOSE 443
 
 CMD [ "nginx", "-g", "daemon off;" ]
+

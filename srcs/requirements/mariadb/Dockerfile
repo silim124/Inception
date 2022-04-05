@@ -10,6 +10,7 @@ RUN mkdir -p /run/mysqld
 
 COPY tools/ /
 COPY conf/mariadb-server.cnf /etc/my.cnf.d/mariadb-server.cnf
+COPY conf/wordpress.sql ./
 
 EXPOSE 3306
 
