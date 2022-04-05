@@ -12,7 +12,7 @@ services:
     image: mariadb
     volumes:
       - db_data:/var/lib/mysql
-    restart: always
+    restart: unless-stopped
     networks:
       - mynetwork
     env_file:
@@ -28,7 +28,7 @@ services:
       - mariadb
     networks:
       - mynetwork
-    restart: always
+    restart: unless-stopped
     env_file:
       - .env
 
@@ -40,7 +40,7 @@ services:
       - wordpress
     networks:
       - mynetwork
-    restart: always
+    restart: unless-stopped
     volumes:
       - wp_data:/var/www/wordpress
     ports:
