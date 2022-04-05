@@ -6,7 +6,7 @@
 #    By: silim <silim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/27 22:10:12 by silim             #+#    #+#              #
-#    Updated: 2022/04/05 08:13:31 by silim            ###   ########.fr        #
+#    Updated: 2022/04/05 12:14:19 by silim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ hosts:
 		@sudo sed -i "s/localhost/${HOST}.42.fr/g" /etc/hosts
 
 build:
-		docker-compose -f srcs/docker-compose.yml build --no-cache
+		docker-compose -f srcs/docker-compose.yml build
 
 up:
 		docker-compose -f srcs/docker-compose.yml up -d --remove-orphans
